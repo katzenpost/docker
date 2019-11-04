@@ -84,6 +84,20 @@ services:
       testing_net:
         ipv4_address: 172.28.1.7
 
+  tor:
+    restart: unless-stopped
+    image: katzenpost/testing_onion
+    volumes:
+      - /home/user/testnet_onion_conf:/conf
+    command: tor -f /conf/torrc
+    depends_on:
+      - auth1
+      - auth2
+      - auth3
+    networks:
+      testing_net:
+        ipv4_address: 172.28.1.11
+
   auth1:
     restart: unless-stopped
     image: katzenpost/voting_authority
