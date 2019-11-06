@@ -94,6 +94,8 @@ services:
       - auth1
       - auth2
       - auth3
+      - provider1
+      - provider2
     networks:
       testing_net:
         ipv4_address: 172.28.1.11
