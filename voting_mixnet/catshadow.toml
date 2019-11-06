@@ -1,7 +1,4 @@
 
-#[UpstreamProxy]
-#  Type = "none"
-
 [UpstreamProxy]
   Type = "socks5"
   Network = "tcp"
@@ -30,8 +27,7 @@
 
 
 [Debug]
-  CaseSensitiveUserIdentifiers = false
-  PollingInterval = 1
+  PreferedTransports = ["onion"]
 
 [Panda]
   Receiver = "+panda"
