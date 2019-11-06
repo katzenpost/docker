@@ -11,6 +11,9 @@
   # to for incoming connections.
   Addresses = [ "172.28.1.4:29484"]
 
+  [Server.AltAddresses]
+    onion = "yow7t4tfabu5vpgeo5pyw7aguasfruddywy2yqhtyx4wdnd7rnhknryd.onion:29484"
+
   # DataDir is the absolute path to the server's state files.
   DataDir = "/conf/provider_data"
 
@@ -67,7 +70,7 @@
 [Provider]
 EnableUserRegistrationHTTP = true
 UserRegistrationHTTPAddresses = ["172.28.1.4:36967"]
-AdvertiseUserRegistrationHTTPAddresses = ["http://127.0.0.1:36967"]
+AdvertiseUserRegistrationHTTPAddresses = ["http://yow7t4tfabu5vpgeo5pyw7aguasfruddywy2yqhtyx4wdnd7rnhknryd.onion:36967"]
 
   [[Provider.Kaetzchen]]
     Capability = "loop"

@@ -86,7 +86,7 @@ services:
 
   tor:
     restart: unless-stopped
-    image: katzenpost/testing_onion
+    image: katzenpost/tor
     volumes:
       - /home/user/testnet_onion_conf:/conf
     command: tor -f /conf/torrc
