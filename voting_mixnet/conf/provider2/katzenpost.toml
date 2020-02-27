@@ -11,7 +11,7 @@
   # to for incoming connections.
   Addresses = [ "172.28.1.4:29484"]
   AltAddresses = [ "140.82.59.232:29484"]
-  OnlyAdvertiseAltAddresses = true
+  OnlyAdvertiseAltAddresses = false
 
   # DataDir is the absolute path to the server's state files.
   DataDir = "/conf/provider_data"
