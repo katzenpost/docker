@@ -10,6 +10,8 @@
   # Addresses are the IP address/port combinations that the server will bind
   # to for incoming connections.
   Addresses = [ "172.28.1.4:29484"]
+  AltAddresses = [ "140.82.59.232:29484"]
+  OnlyAdvertiseAltAddresses = false
 
   # DataDir is the absolute path to the server's state files.
   DataDir = "/conf/provider_data"
@@ -67,7 +69,7 @@
 [Provider]
 EnableUserRegistrationHTTP = true
 UserRegistrationHTTPAddresses = ["172.28.1.4:36967"]
-AdvertiseUserRegistrationHTTPAddresses = ["http://127.0.0.1:36967"]
+AdvertiseUserRegistrationHTTPAddresses = ["http://140.82.59.232:36967"]
 
   [[Provider.Kaetzchen]]
     Capability = "loop"
