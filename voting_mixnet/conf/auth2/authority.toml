@@ -8,7 +8,7 @@
 
   # Addresses are the IP address/port combinations that the authority will bind
   # to for incoming connections.
-  Addresses = [ "172.28.1.8:22483" ]
+  Addresses = [ "140.82.59.232:22483" ]
 
   # DataDir is the absolute path to the server's state files.
   DataDir = "/conf/authority_data"
@@ -16,7 +16,7 @@
 [[Authorities]]
    IdentityPublicKey = "xCjlBac+wanLeUQbrNLTwQzFKIwfJqpoKZYfB/hvZHo="
    LinkPublicKey = "I49V1w7OJ/Kcw7YbEvo+92akE9cYLGeXRBg6KE/sYS8="
-   Addresses = [ "172.28.1.10:21483" ]
+   Addresses = [ "140.82.59.232:21483" ]
 
 #[[Authorities]]
 #   IdentityPublicKey = "OAfHeF/U+y7dXWgxSCuPOBIqgBOuIC7JKilZJU/Dt9c="
@@ -26,7 +26,7 @@
 [[Authorities]]
    IdentityPublicKey = "e8iJCBjepa/Cpmmu5UCcR6BZgYssUTaih9U01ysEK+o="
    LinkPublicKey = "jBVovebgazZB38Q3OZzEvLb8UDEUB6sRQZAULDrxKAY="
-   Addresses = [ "172.28.1.9:23483" ]
+   Addresses = [ "140.82.59.232:23483" ]
 
 
 #
