@@ -6,21 +6,13 @@
 
 [Server]
   Identifier = "provider2"
-
-  # Addresses are the IP address/port combinations that the server will bind
-  # to for incoming connections.
   Addresses = ["172.28.1.4:29484"]
+  OnlyAdvertiseAltAddresses = true
+  DataDir = "/conf/provider_data"
+  IsProvider = true
 
   [Server.AltAddresses]
      tcp4 = ["140.82.59.232:29484"]
-
-  OnlyAdvertiseAltAddresses = true
-
-  # DataDir is the absolute path to the server's state files.
-  DataDir = "/conf/provider_data"
-
-  # IsProvider specifies if the server is a provider (vs a mix).
-  IsProvider = true
 
 #
 # The PKI section contains the directory authority configuration.
