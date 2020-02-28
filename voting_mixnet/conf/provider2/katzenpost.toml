@@ -9,9 +9,10 @@
 
   # Addresses are the IP address/port combinations that the server will bind
   # to for incoming connections.
-  Addresses = [ "172.28.1.4:29484"]
-  [AltAddresses]
-     tcp4="140.82.59.232:29484"]
+  Addresses = ["172.28.1.4:29484"]
+
+  [Server.AltAddresses]
+     tcp4 = ["140.82.59.232:29484"]
 
   OnlyAdvertiseAltAddresses = true
 
