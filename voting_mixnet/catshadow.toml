@@ -5,7 +5,7 @@
 [Logging]
   Disable = false
   Level = "DEBUG"
-  File = "/tmp/my_catshadow.log"
+  File = ""
 
 [VotingAuthority]
     [[VotingAuthority.Peers]]
