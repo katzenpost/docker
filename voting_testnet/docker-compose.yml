@@ -1,0 +1,352 @@
+version: "3"
+
+configs:
+  a0_config:
+    file: ./conf/a-0/authority.toml
+  a1_config:
+    file: ./conf/a-1/authority.toml
+  a2_config:
+    file: ./conf/a-2/authority.toml
+  m0_config:
+    file: ./conf/m-0/katzenpost.toml
+  m1_config:
+    file: ./conf/m-1/katzenpost.toml
+  m2_config:
+    file: ./conf/m-2/katzenpost.toml
+  m3_config:
+    file: ./conf/m-3/katzenpost.toml
+  m4_config:
+    file: ./conf/m-4/katzenpost.toml
+  m5_config:
+    file: ./conf/m-5/katzenpost.toml
+  p0_config:
+    file: ./conf/p-0/katzenpost.toml
+  p1_config:
+    file: ./conf/p-1/katzenpost.toml
+
+secrets:
+  a0_identity_pub:
+    file: ./conf/a-0/identity.public.pem
+  a0_identity_priv:
+    file: ./conf/a-0/identity.private.pem
+  a0_link_pub:
+    file: ./conf/a-0/link.public.pem
+  a0_link_priv:
+    file: ./conf/a-0/link.private.pem
+
+  a1_identity_pub:
+    file: ./conf/a-1/identity.public.pem
+  a1_identity_priv:
+    file: ./conf/a-1/identity.private.pem
+  a1_link_pub:
+    file: ./conf/a-1/link.public.pem
+  a1_link_priv:
+    file: ./conf/a-1/link.private.pem
+
+  a2_identity_pub:
+    file: ./conf/a-2/identity.public.pem
+  a2_identity_priv:
+    file: ./conf/a-2/identity.private.pem
+  a2_link_pub:
+    file: ./conf/a-2/link.public.pem
+  a2_link_priv:
+    file: ./conf/a-2/link.private.pem
+
+  m0_identity_pub:
+    file: ./conf/m-0/identity.public.pem
+  m0_identity_priv:
+    file: ./conf/m-0/identity.private.pem
+  m0_link_priv:
+    file: ./conf/m-0/link.private.pem
+
+  m1_identity_pub:
+    file: ./conf/m-1/identity.public.pem
+  m1_identity_priv:
+    file: ./conf/m-1/identity.private.pem
+  m1_link_priv:
+    file: ./conf/m-1/link.private.pem
+
+  m2_identity_pub:
+    file: ./conf/m-2/identity.public.pem
+  m2_identity_priv:
+    file: ./conf/m-2/identity.private.pem
+  m2_link_priv:
+    file: ./conf/m-2/link.private.pem
+
+  m3_identity_pub:
+    file: ./conf/m-3/identity.public.pem
+  m3_identity_priv:
+    file: ./conf/m-3/identity.private.pem
+  m3_link_priv:
+    file: ./conf/m-3/link.private.pem
+
+  m4_identity_pub:
+    file: ./conf/m-4/identity.public.pem
+  m4_identity_priv:
+    file: ./conf/m-4/identity.private.pem
+  m4_link_priv:
+    file: ./conf/m-4/link.private.pem
+
+  m5_identity_pub:
+    file: ./conf/m-5/identity.public.pem
+  m5_identity_priv:
+    file: ./conf/m-5/identity.private.pem
+  m5_link_priv:
+    file: ./conf/m-5/link.private.pem
+
+  p0_identity_pub:
+    file: ./conf/p-0/identity.public.pem
+  p0_identity_priv:
+    file: ./conf/p-0/identity.private.pem
+  p0_link_priv:
+    file: ./conf/p-0/link.private.pem
+
+  p1_identity_pub:
+    file: ./conf/p-1/identity.public.pem
+  p1_identity_priv:
+    file: ./conf/p-1/identity.private.pem
+  p1_link_priv:
+    file: ./conf/p-1/link.private.pem
+
+services:
+  p-0:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/server
+    command: /go/bin/server -f /conf/katzenpost.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==p-0"
+    configs:
+      - p0_config
+    secrets:
+      - source: p0_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: p0_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: p0_link_priv
+        target: link.private.pem
+        mode: 0400
+  p-1:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/server
+    command: /go/bin/server -f /conf/katzenpost.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==p-1"
+    configs:
+      - p1_config
+    secrets:
+      - source: p1_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: p1_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: p1_link_priv
+        target: link.private.pem
+        mode: 0400
+  m-0:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/server
+    command: /go/bin/server -f /conf/katzenpost.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==m-0"
+    configs:
+      - m0_config
+    secrets:
+      - source: m0_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: m0_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: m0_link_priv
+        target: link.private.pem
+        mode: 0400
+  m-1:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/server
+    command: /go/bin/server -f /conf/katzenpost.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==m-1"
+    configs:
+      - m1_config
+    secrets:
+      - source: m1_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: m1_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: m1_link_priv
+        target: link.private.pem
+        mode: 0400
+  m-2:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/server
+    command: /go/bin/server -f /conf/katzenpost.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==m-2"
+    configs:
+      - m2_config
+    secrets:
+      - source: m2_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: m2_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: m2_link_priv
+        target: link.private.pem
+        mode: 0400
+  m-3:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/server
+    command: /go/bin/server -f /conf/katzenpost.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==m-3"
+    configs:
+      - m3_config
+    secrets:
+      - source: m3_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: m3_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: m3_link_priv
+        target: link.private.pem
+        mode: 0400
+  m-4:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/server
+    command: /go/bin/server -f /conf/katzenpost.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==m-4"
+    configs:
+      - m4_config
+    secrets:
+      - source: m4_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: m4_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: m4_link_priv
+        target: link.private.pem
+        mode: 0400
+  m-5:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/server
+    command: /go/bin/server -f /conf/katzenpost.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==m-5"
+    configs:
+      - m5_config
+    secrets:
+      - source: m5_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: m5_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: m5_link_priv
+        target: link.private.pem
+        mode: 0400
+  a-0:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/voting_authority
+    command: /go/bin/voting -f /conf/authority.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==a-0"
+    configs:
+      - a0_config
+    secrets:
+      - source: a0_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: a0_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: a0_link_pub
+        target: link.public.pem
+        mode: 0400
+      - source: a0_link_priv
+        target: link.private.pem
+        mode: 0400
+  a-1:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/voting_authority
+    command: /go/bin/voting -f /conf/authority.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==a-1"
+    configs:
+      - a1_config
+    secrets:
+      - source: a1_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: a1_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: a1_link_pub
+        target: link.public.pem
+        mode: 0400
+      - source: a1_link_priv
+        target: link.private.pem
+        mode: 0400
+  a-2:
+    restart: unless-stopped
+    image: 37.218.242.160:5000/katzenpost/voting_authority
+    command: /go/bin/voting -f /conf/authority.toml
+    network_mode: "host"
+    deploy:
+      placement:
+        constraints:
+          - "node.hostname==a-2"
+    configs:
+      - a2_config
+    secrets:
+      - source: a2_identity_pub
+        target: identity.public.pem
+        mode: 0400
+      - source: a2_identity_priv
+        target: identity.private.pem
+        mode: 0400
+      - source: a2_link_pub
+        target: link.public.pem
+        mode: 0400
+      - source: a2_link_priv
+        target: link.private.pem
+        mode: 0400
+
