@@ -1,0 +1,32 @@
+[Proxy]
+  POP3Address = "172.28.1.8:110"
+  SMTPAddress = "172.28.1.8:25"
+  DataDir = "/conf/mailproxy"
+
+[Logging]
+  Disable = false
+  Level = "DEBUG"
+  # File specifies the log file, if omitted stdout will be used.
+  File = "/conf/mailproxy/mailproxy.log"
+
+[NonvotingAuthority]
+  [NonvotingAuthority.PlaygroundAuthority]
+  Address = "172.28.1.2:29483"
+  PublicKey = "o4w1Nyj/nKNwho5SWfAIfh7SMU8FRx52nMHGgYsMHqQ="
+
+[[Account]]
+  User = "alice"
+  Provider = "provider1"
+  ProviderKeyPin = "2krwfNDfbakZCSTUUZYKXwdduzlEgS9Jfwm7eyZ0sCg="
+  NonvotingAuthority = "PlaygroundAuthority"
+  InsecureKeyDiscovery = true
+
+[[Account]]
+  User = "bob"
+  Provider = "provider2"
+  ProviderKeyPin = "imigzI26tTRXyYLXujLEPI9QrNYOEgC4DElsFdP9acQ="
+  NonvotingAuthority = "PlaygroundAuthority"
+  InsecureKeyDiscovery = true
+
+[Management]
+  Enable = false
