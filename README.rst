@@ -15,7 +15,7 @@ docker-compose situation is not meant for production use.
    ./fix_perms.sh
 
 
-3. run docker-compose from this repository and cd into one of the folders depending on your usecase (control-c to exit)
+1. run docker-compose from this repository and cd into one of the folders depending on your usecase (control-c to exit)
 ::
 
    docker-compose up
