@@ -1,0 +1,35 @@
+test_mixnet_mailproxy:
+  image: docker
+  services:
+      - docker:dind
+  before_script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN $CI_REGISTRY
+  script:
+    - apk add --no-cache py-pip gcc libffi-dev openssl-dev libc-dev make python3-dev  # ssmtp
+    - apk add --no-cache perl perl-net-ssleay perl-net-dns curl tzdata bash
+    - pip install docker-compose
+    - /bin/sh fix_perms.sh
+    - cd nonvoting_mixnet_mailproxy
+    - docker-compose up -d
+    - sleep 30
+    - ./add_users.sh
+    - cat conf/provider1/provider_data/users.db
+    - cat conf/provider2/provider_data/users.db
+    - cat conf/auth/authority_data/katzenpost.log
+    - cat conf/mix1/mix_data/katzenpost.log
+    - cat conf/mailproxy/mailproxy/mailproxy.log
+    - docker ps -a
+    # - cp ssmtp.conf /etc/ssmtp && ssmtp bob@provider2 < email.txt
+    - curl -SLk http://www.jetmore.org/john/code/swaks/files/swaks-20190914.0/swaks -o swaks
+    - chmod +x swaks
+    - mv swaks /usr/bin
+    - swaks --from alice@provider1 --to bob@provider2 --server 127.0.0.1:2525
+    - cat conf/mailproxy/mailproxy/mailproxy.log
+    - sleep 180
+    - curl --user bob@provider2:pw pop3://127.0.0.1:2524
+    - curl --user bob@provider2:pw pop3://127.0.0.1:2524/1
+  artifacts:
+    paths:
+      - nonvoting_mixnet_mailproxy/conf
+    when: always
+  allow_failure: true
