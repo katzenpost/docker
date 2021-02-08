@@ -51,29 +51,35 @@
   #
   # If omitted, the MaxDelay will be derived from the 0.99999 quantile of
   # of the exponential distribution.
-  MuMaxDelay = 90000
+  MuMaxDelay = 9000
 
   # LambdaP is the mean of the poisson distribution that clients will use
   # to sample the send scheduling interval (seconds).
-  LambdaP = 0.0001234
+  LambdaP = 0.0005
 
   # LambaPMaxDelay is the maximum send interval in milliseconds.
-  LambdaPMaxDelay = 30000
+  LambdaPMaxDelay = 10000
 
   # LambdaL is the mean of the poisson distribution that clients will use
   # to sample the send scheduling interval (seconds).
-  LambdaL = 0.0001234
+  LambdaL = 0.0002
 
   # LambaLMaxDelay is the maximum send interval in milliseconds.
-  LambdaLMaxDelay = 30000
+  LambdaLMaxDelay = 10000
 
   # LambdaD is the mean of the poisson distribution that clients will use
   # to sample the send scheduling interval (seconds).
-  LambdaD = 0.0001234
+  LambdaD = 0.0002
 
   # LambaDMaxDelay is the maximum send interval in milliseconds.
-  LambdaDMaxDelay = 30000
+  LambdaDMaxDelay = 10000
 
+  # LambdaL is the mean of the poisson distribution that mixes will use
+  # to sample the mix loop scheduling interval (seconds).
+  LambdaM = 0.005
+
+  # LambaLMaxDelay is the maximum mix loop interval in milliseconds.
+  LambdaMMaxDelay = 10000
 
 #
 # The Mixes array defines the list of white-listed non-provider nodes.
