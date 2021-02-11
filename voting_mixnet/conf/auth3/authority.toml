@@ -54,41 +54,48 @@
 # The Parameters section holds the network parameters.
 #
 
+
 [Parameters]
 
   SendRatePerMinute = 0
 
   # Mu is the inverse of the mean of the exponential distribution that
   # clients will use to sample delays.
-  Mu = 0.001
+  Mu = 0.01
 
   # MuMaxDelay is the maximum per-hop delay in milliseconds.
   #
   # If omitted, the MaxDelay will be derived from the 0.99999 quantile of
   # of the exponential distribution.
-  MuMaxDelay = 90000
+  MuMaxDelay = 900
 
   # LambdaP is the mean of the poisson distribution that clients will use
   # to sample the send scheduling interval (seconds).
-  LambdaP = 0.0001234
+  LambdaP = 0.001
 
   # LambaPMaxDelay is the maximum send interval in milliseconds.
-  LambdaPMaxDelay = 30000
+  LambdaPMaxDelay = 5000
 
   # LambdaL is the mean of the poisson distribution that clients will use
   # to sample the send scheduling interval (seconds).
-  LambdaL = 0.0001234
+  LambdaL = 0.001
 
   # LambaLMaxDelay is the maximum send interval in milliseconds.
-  LambdaLMaxDelay = 30000
+  LambdaLMaxDelay = 5000
 
   # LambdaD is the mean of the poisson distribution that clients will use
   # to sample the send scheduling interval (seconds).
-  LambdaD = 0.0001234
+  LambdaD = 0.001
 
   # LambaDMaxDelay is the maximum send interval in milliseconds.
-  LambdaDMaxDelay = 30000
+  LambdaDMaxDelay = 5000
 
+  # LambdaM is the mean of the poisson distribution that mixes will use
+  # to sample the mix loop scheduling interval (... not seconds)
+  LambdaM = 0.01
+
+  # LambdaMMaxDelay is the maximum mix loop send interval in milliseconds.
+  LambdaMMaxDelay = 500
 
 #
 # The Mixes array defines the list of white-listed non-provider nodes.
