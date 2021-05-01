@@ -8,8 +8,8 @@ services:
       - ./conf/provider1:/conf
     command: /go/bin/server -f /conf/katzenpost.toml
     ports:
-      - "127.0.0.1:59484:59484"
-      - "127.0.0.1:36968:36968"
+      - "59484:59484"
+      - "36968:36968"
     depends_on:
       - auth
     networks:
@@ -23,8 +23,8 @@ services:
       - ./conf/provider2:/conf
     command: /go/bin/server -f /conf/katzenpost.toml
     ports:
-      - "127.0.0.1:29484:29484"
-      - "127.0.0.1:36967:36967"
+      - "29484"
+      - "36967"
     depends_on:
       - auth
       - provider1
@@ -81,7 +81,7 @@ services:
       - ./conf/auth:/conf
     command: /go/bin/nonvoting -f /conf/authority.toml
     ports:
-      - "127.0.0.1:29483:29483"
+      - "29483:29483"
     networks:
       nonvoting_test_net:
         ipv4_address: 172.28.1.2
