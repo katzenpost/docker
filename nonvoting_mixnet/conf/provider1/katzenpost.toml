@@ -58,6 +58,8 @@
 #
 
 [Provider]
+EnableEphemeralClients = true
+TrustOnFirstUse = true
 EnableUserRegistrationHTTP = true
 UserRegistrationHTTPAddresses = ["172.28.1.3:36968"]
 AdvertiseUserRegistrationHTTPAddresses = ["http://127.0.0.1:36968"]
