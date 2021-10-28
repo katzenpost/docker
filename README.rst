@@ -9,38 +9,13 @@ Katzenpost developer work flow. It should be obvious that this
 docker-compose situation is not meant for production use.
 
 
-1. build the mix server docker image
-::
-
-   git clone https://github.com/katzenpost/server.git
-   cd server
-   docker build --no-cache -t katzenpost/server .
-
-
-2. build the authority docker image
-
-voting authority
-::
-
-   git clone https://github.com/katzenpost/authority.git
-   cd authority
-   docker build -f Dockerfile.voting --no-cache -t katzenpost/voting_authority .
-
-nonvoting authority
-::
-
-   git clone https://github.com/katzenpost/authority.git
-   cd authority
-   docker build -f Dockerfile.nonvoting --no-cache -t katzenpost/nonvoting_authority .
-
-
 **NOTE** katzenpost expects its configuration files to be readable by the owner only. Fix the permissions by running the fix_perms.sh script in git root:
 ::
 
    ./fix_perms.sh
 
 
-3. run docker-compose from this repository and cd into one of the folders depending on your usecase (control-c to exit)
+1. run docker-compose from this repository and cd into one of the folders depending on your usecase (control-c to exit)
 ::
 
    docker-compose up
